@@ -8,7 +8,7 @@ def extract_call_args(source: str) -> List[str]:
     call = tree.body[0].value  # Assumes the first statement is the function call
     return [ast.unparse(arg) for arg in call.args]
 
-def say(*args: Any, sep: str = '-', leng: int = 30, blank_lines: tuple = (1, 1)) -> None:
+def say(*args: Any, sep: str = '-', leng: int = 30, blank_lines: tuple = (0, 1)) -> None:
     # Get the caller's local variables and source code
     frame = inspect.currentframe().f_back
     local_vars = frame.f_locals

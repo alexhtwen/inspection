@@ -1,5 +1,8 @@
+import random as rd
+
 from tools import say
 
+# # 這個檔案的code是senior developer寫的。
 class ArithmeticOperations():
     def add(self, operand1: int, operand2: int) -> int:
         """Add two numbers."""
@@ -29,6 +32,24 @@ class ArithmeticOperations():
     def power(self, operand1: int, operand2: int) -> int:
         """Multiply two numbers."""
         return operand1 ** operand2
+
+def parse_expr(expression: str, valid_operators: dict) -> tuple:
+    # print('----------------')
+    operand1, operator, operand2 = 0, '', 0
+    for valid_operator in valid_operators:
+        if valid_operator in expression:
+            partitioned_exp = expression.partition(valid_operator)
+            # say(partitioned_exp)
+            operand1 = int(partitioned_exp[0])
+            operator = partitioned_exp[1]
+            operand2 = int(partitioned_exp[2])
+            break
+    # say(operand1, operator, operand2)
+    if operator not in valid_operators:
+            raise ValueError("Invalid operator")
+
+    return operand1, operator, operand2
+
 
 operation = ArithmeticOperations()
 # a dictionary mapping operators to functions

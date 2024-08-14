@@ -10,9 +10,4 @@ class Calculator():
         ...
 
     def calculate(self, expression: str) -> int:
-        return_value = None
-        operand1, operator, operand2 = parse_expr(expression, valid_operators)
-
-        operation = ArithmeticOperations()
-        func = valid_operators[operator]
-        return func(operand1, operand2)
+        return eval(expression)

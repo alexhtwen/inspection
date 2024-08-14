@@ -53,13 +53,13 @@ def parse_expr(expression: str, valid_operators: dict) -> tuple:
 
 operation = ArithmeticOperations()
 # a dictionary mapping operators to functions
-valid_operators = {
-    '//': operation.int_divide,
+valid_operators = {   # 缺點：有順序問題
+    '//': operation.int_divide,  # 要在'/'之前
     '/': operation.divide,
-    '**': operation.power,
+    '**': operation.power,       # 要在'*'之前
     '*': operation.multiply,
     '+': operation.add,
-    '-': operation.subtract,
+    '-': operation.subtract,    # 要放在最後
 }
 
 valid_methods = {
@@ -67,4 +67,6 @@ valid_methods = {
     'subtract': '-',
     'multiply': '*',
     'divide': '/',
+    'int_divide': '//',
+    'power': '**',
 }

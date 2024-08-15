@@ -14,14 +14,6 @@ class Calculator:
         """
         Dynamically discover and return a dictionary of supported operations.
         """
-        # valid_methods = {
-        #     'add': '+',
-        #     'subtract': '-',
-        #     'multiply': '*',
-        #     'divide': '/',
-        #     'int_devide': '//',
-        #     'power': '**',
-        # }
 
         operations = {}
         for name, func in inspect.getmembers(self.operations_instance, predicate=inspect.ismethod):
@@ -44,7 +36,7 @@ class Calculator:
 
         return_value = None
         operand1, operator, operand2 = parse_expr(expression, valid_operators)
-        say(operand1, operator, operand2)
+        # say(operand1, operator, operand2)
         operation = ArithmeticOperations()
         if operator in self.operations:
             func_info = self.operations[operator]

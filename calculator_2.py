@@ -34,5 +34,9 @@ class Calculator():
                     return_value = operation.int_divide(operand1, operand2)
             case '**':
                 return_value = operation.power(operand1, operand2)
+            # case '%':
+            #     return_value = operation.factorial(operand1, operand2)
+            # case '!':
+            #     return_value = operation.factorial(operand1, operand2)
 
         return return_value

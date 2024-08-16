@@ -2,7 +2,7 @@ import random as rd
 
 from tools import say
 
-# # 這個檔案的code是senior developer寫的。
+# 核心運算部分的code是senior developers寫的。
 class ArithmeticOperations():
     def add(self, operand1: int, operand2: int) -> int:
         """Add two numbers."""
@@ -17,7 +17,7 @@ class ArithmeticOperations():
         """Multiply two numbers."""
         return operand1 * operand2
 
-    def divide(self, operand1: int, operand2: int) -> int:
+    def divide(self, operand1: int, operand2: int) -> float:
         """Divide first number by second. Raises ValueError if second number is zero."""
         if operand2 == 0:
             raise ValueError("Cannot divide by zero")
@@ -33,6 +33,11 @@ class ArithmeticOperations():
         """Multiply two numbers."""
         return operand1 ** operand2
 
+    def factorial(self, operand: int) -> int:
+        return_value = 1
+        for i in range(1, operand + 1):
+            return_value = return_value * i
+
 def parse_expr(expression: str, valid_operators: dict) -> tuple:
     # print('----------------')
     operand1, operator, operand2 = 0, '', 0
@@ -46,16 +51,16 @@ def parse_expr(expression: str, valid_operators: dict) -> tuple:
             break
     # say(operand1, operator, operand2)
     if operator not in valid_operators:
-            raise ValueError("Invalid operator")
+        raise ValueError("Invalid operator")
 
     return operand1, operator, operand2
 
 
 operation = ArithmeticOperations()
 # a dictionary mapping operators to functions
-valid_operators = {   # 缺點：有順序問題
+valid_operators = {              # 缺點：有順序問題
     '//': operation.int_divide,  # 要在'/'之前
-    '/': operation.divide,
+    '/': 'operation.divide',
     '**': operation.power,       # 要在'*'之前
     '*': operation.multiply,
     '+': operation.add,

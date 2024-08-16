@@ -4,47 +4,56 @@ import sys
 from tools import say
 
 class Bacteria:
-    def bacteria_instance_method(self):
+    def instance_method(self):
         """This is an instance method in Bacteria."""
         ...
 
     @classmethod
-    def bacteria_class_method(cls):
+    def class_method(cls):
         """This is a class method in Bacteria."""
         ...
 
     @staticmethod
-    def bacteria_static_method():
+    def static_method1():
         """This is a static method in Bacteria."""
         ...
 
+    @staticmethod
+    def static_method2():
+        """This is another static method in Bacteria."""
+        ...
+
 class Plant:
-    def plant_instance_method(self):
+    def instance_method(self):
         """This is an instance method in Plant."""
         ...
 
     @classmethod
-    def plant_class_method(cls):
-        """This is a class method in Plant."""
-        ...
-
-    @staticmethod
-    def plant_static_method():
-        """This is a static method in Plant."""
-        ...
-
-class Animal:
-    def animal_instance_method(self):
-        """This is an instance method in Animal."""
+    def class_method1(cls):
+        """This is the first class method in Plant."""
         ...
 
     @classmethod
-    def animal_class_method(cls):
-        """This is a class method in Animal."""
+    def class_method2(cls):
+        """This is the second class method in Plant."""
+        ...
+
+    @classmethod
+    def class_method3(cls):
+        """This is the third class method in Plant."""
+        ...
+
+class Animal:
+    def instance_method1(self):
+        """This is an instance method in Animal."""
+        ...
+
+    def instance_method2(self):
+        """This is another instance method in Animal."""
         ...
 
     @staticmethod
-    def animal_static_method():
+    def static_method():
         """This is a static method in Animal."""
         ...
 
@@ -79,12 +88,27 @@ def get_all_classes(module):
     """
     return [cls for name, cls in inspect.getmembers(module, inspect.isclass) if cls.__module__ == module.__name__]
 
+
 # Example usage
 if __name__ == "__main__":
     # Dynamically get the current module
-    current_module = sys.modules[__name__]
+    current_module = sys.modules[__name__]   # 目前模組
+    print()
+    # for name, obj in inspect.getmembers(Bacteria(), predicate=inspect.ismethod):
+    #     print(name, obj)
+    # print()
+    # for name, obj in inspect.getmembers(Bacteria(), predicate=inspect.isfunction):
+    #         print(name, obj)
+    # print()
 
-    # Dynamically list all classes in the current module
+    # print()
+    # for name, obj in inspect.getmembers(ExampleClass, predicate=inspect.ismethod):
+    #     print(name, obj)
+
+
+
+
+    # # Dynamically list all classes in the current module
     classes_and_methods = {
         cls.__name__: get_all_methods(cls)
         for cls in get_all_classes(current_module)
@@ -93,6 +117,6 @@ if __name__ == "__main__":
     for class_name, methods in classes_and_methods.items():
         print(f"Class: {class_name}")
         print(f"  Instance Methods: {methods['instance_methods']}")
-        print(f"  Class Methods: {methods['class_methods']}")
-        print(f"  Static Methods: {methods['static_methods']}")
+        print(f"  Class Methods   : {methods['class_methods']}")
+        print(f"  Static Methods  : {methods['static_methods']}")
         print()

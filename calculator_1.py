@@ -24,7 +24,7 @@ class Calculator():
             case '/':
                 if operand2 == 0:
                     # raise ValueError("Cannot divide by zero")
-                    return_value = 'Exception: Cannot divide by zero'
+                    return_value = '**Exception: Cannot divide by zero**'
                 else:
                     return_value = operation.divide(operand1, operand2)
 

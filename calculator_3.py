@@ -1,7 +1,4 @@
-import random as rd
-
-from tools import say
-from operations import ArithmeticOperations, valid_operators, parse_expr
+# from operations import ArithmeticOperations, valid_operators, parse_expr
 
 
 # 這個class是junior developer寫的。
@@ -10,4 +7,4 @@ class Calculator():
         ...
 
     def calculate(self, expression: str) -> int:
-        return eval(expression)
+         return eval(expression)
